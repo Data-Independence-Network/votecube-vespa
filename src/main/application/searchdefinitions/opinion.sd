@@ -10,10 +10,6 @@ search opinion {
             indexing: summary | attribute
         }
 
-        field opinionId type long {
-            indexing: summary | attribute
-        }
-
     }
 
     fieldset default {

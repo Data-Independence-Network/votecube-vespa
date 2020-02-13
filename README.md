@@ -53,6 +53,10 @@ Assuming that votecube-vespa project directory is located under: ~/vc
 
     docker exec vespa bash -c "curl -s --head http://localhost:19071/ApplicationStatus"
 
+The response should contain the following line (at first nothing will be returned):
+
+HTTP/1.1 200 OK
+
 4.  Deploy and activate a votecube-vespa application:
 
     docker exec vespa bash -c "/opt/vespa/bin/vespa-deploy prepare /vespa-apps/votecube-vespa/src/main/application/ && /opt/vespa/bin/vespa-deploy activate"
@@ -61,6 +65,16 @@ Assuming that votecube-vespa project directory is located under: ~/vc
   
     curl -s --head http://localhost:8086/ApplicationStatus
 
+
+Once installed copy out the client jar:
+
+docker cp vespa:/opt/vespa/lib/jars/vespa-http-client-jar-with-dependencies.jar ./vespa-http-client-jar-with-dependencies.jar
+
+Client jar is used to feed data into vespa by the aux process like so:
+
+java -jar ./vespa-http-client-jar-with-dependencies.jar --file ./testVespaInput.json --host localhost --port 8086
+Thu Feb 13 13:26:30 MST 2020 Result received: 0 (0 failed so far, 2 sent, success rate 0.00 docs/sec).
+Thu Feb 13 13:26:30 MST 2020 Result received: 2 (0 failed so far, 2 sent, success rate 19.61 docs/sec).
 
 ### Contribution guidelines ###
 

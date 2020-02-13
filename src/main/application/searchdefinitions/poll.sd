@@ -10,10 +10,6 @@ search poll {
             indexing: index
         }
 
-        field pollId type long {
-            indexing: summary | attribute
-        }
-
     }
 
     fieldset default {
