@@ -1,0 +1,23 @@
+search poll {
+
+    document poll {
+
+        field title type string {
+            indexing: index
+        }
+
+        field contents type string {
+            indexing: index
+        }
+
+        field pollId type long {
+            indexing: summary | attribute
+        }
+
+    }
+
+    fieldset default {
+        fields: title,contents
+    }
+
+}

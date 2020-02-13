@@ -1,0 +1,23 @@
+search opinion {
+
+    document opinion {
+
+        field text type string {
+            indexing: index
+        }
+
+        field pollId type long {
+            indexing: summary | attribute
+        }
+
+        field opinionId type long {
+            indexing: summary | attribute
+        }
+
+    }
+
+    fieldset default {
+        fields: text
+    }
+
+}
